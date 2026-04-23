@@ -3,11 +3,11 @@
 
 // ==== Adafruit io ====
 
-#define WIFI_SSID "Nathan"
-#define WIFI_PASS "asdfghjk"
+#define IO_USERNAME "KauanLopes02"
+#include "config.h"
 
-
-
+#define WIFI_SSID "Galaxy A71A624"
+#define WIFI_PASS "12345678"
 
 //=== DHT11 ===
 #define DHTPIN 4 // pino Data do dht11 ao GPIO4

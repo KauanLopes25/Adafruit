@@ -23,7 +23,7 @@ app.get("/sensor", (req,res) =>{
     res.send("ok");
 });
 
-app.get("/dados)", (req, res)=> {
+app.get("/dados", (req, res)=> {
     res.json(dados)
 })
 
