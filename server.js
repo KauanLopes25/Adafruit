@@ -1,4 +1,5 @@
-const express = require("express")
+const express = require("express");
+const res = require("express/lib/response");
 const app = express()
 
 let dados = [];
@@ -21,3 +22,13 @@ app.get("/sensor", (req,res) =>{
 
     res.send("ok");
 });
+
+app.get("/dados)", (req, res)=> {
+    res.json(dados)
+})
+
+const PORT = process.env.PORT || 3000
+
+app.listen(PORT, () => {
+    console.log(`Servidor rodando na porta ${PORT}`)
+})
