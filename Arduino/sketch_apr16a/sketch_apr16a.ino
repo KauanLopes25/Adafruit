@@ -1,5 +1,7 @@
+#include <HTTPClient.h>
 #include "AdafruitIO_WiFi.h"
 #include <DHT.h>
+#include <WiFi.h>
 
 // ==== Adafruit io ====
 
@@ -12,6 +14,8 @@
 //=== DHT11 ===
 #define DHTPIN 4 // pino Data do dht11 ao GPIO4
 #define DHTTYPE DHT11
+
+const char* serverName = "https://adafruit.onrender.com/sensor";
 
 DHT dht(DHTPIN, DHTTYPE);
 
@@ -68,6 +72,19 @@ void loop(){
     Serial.print("Temperatura: ");
     Serial.print(temp);
     Serial.println(" °C");
+  if(WiFi.status()==WL_CONNECTED){
+    HTTPClient http;
+    
+    String url = String(serverName) + "?temp=" + String(temp) + "&hum" + String(hum);
+
+    http.begin(url);
+
+    int httpResponseCode = http.GET();
+    Serial.print("Código HTTP");
+    Serial.println(httpResponseCode);
+
+    http.end();
+  }
 
     temperatura -> save(temp);
     ultimaTemp = temp;
@@ -84,4 +101,3 @@ void loop(){
   delay(3000);
 
 }
-
