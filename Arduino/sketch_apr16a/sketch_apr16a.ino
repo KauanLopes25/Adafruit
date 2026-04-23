@@ -75,7 +75,7 @@ void loop(){
   if(WiFi.status()==WL_CONNECTED){
     HTTPClient http;
     
-    String url = String(serverName) + "?temp=" + String(temp) + "&hum" + String(hum);
+    String url = String(serverName) + "?temp=" + String(temp) + "&hum=" + String(hum);
 
     http.begin(url);
 
